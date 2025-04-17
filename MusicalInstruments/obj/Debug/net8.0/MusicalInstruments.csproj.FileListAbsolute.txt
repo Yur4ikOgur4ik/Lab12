@@ -67,3 +67,15 @@ C:\Users\PogU\source\repos\LW11\LW-11\MusicalInstruments\obj\Debug\net8.0\Musica
 C:\Users\PogU\source\repos\LW11\LW-11\MusicalInstruments\obj\Debug\net8.0\MusicalInstruments.csproj.CoreCompileInputs.cache
 C:\Users\PogU\source\repos\LW11\LW-11\MusicalInstruments\obj\Debug\net8.0\ref\MusicalInstruments.dll
 C:\Users\PogU\source\repos\LW11\LW-11\MusicalInstruments\obj\Debug\net8.0\MusicalInstruments.sourcelink.json
+C:\Users\PogU\source\repos\Lab12\MusicalInstruments\bin\Debug\net8.0\MusicalInstruments.deps.json
+C:\Users\PogU\source\repos\Lab12\MusicalInstruments\bin\Debug\net8.0\MusicalInstruments.dll
+C:\Users\PogU\source\repos\Lab12\MusicalInstruments\bin\Debug\net8.0\MusicalInstruments.pdb
+C:\Users\PogU\source\repos\Lab12\MusicalInstruments\obj\Debug\net8.0\MusicalInstruments.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PogU\source\repos\Lab12\MusicalInstruments\obj\Debug\net8.0\MusicalInstruments.AssemblyInfoInputs.cache
+C:\Users\PogU\source\repos\Lab12\MusicalInstruments\obj\Debug\net8.0\MusicalInstruments.AssemblyInfo.cs
+C:\Users\PogU\source\repos\Lab12\MusicalInstruments\obj\Debug\net8.0\MusicalInstruments.csproj.CoreCompileInputs.cache
+C:\Users\PogU\source\repos\Lab12\MusicalInstruments\obj\Debug\net8.0\MusicalInstruments.sourcelink.json
+C:\Users\PogU\source\repos\Lab12\MusicalInstruments\obj\Debug\net8.0\MusicalInstruments.dll
+C:\Users\PogU\source\repos\Lab12\MusicalInstruments\obj\Debug\net8.0\refint\MusicalInstruments.dll
+C:\Users\PogU\source\repos\Lab12\MusicalInstruments\obj\Debug\net8.0\MusicalInstruments.pdb
+C:\Users\PogU\source\repos\Lab12\MusicalInstruments\obj\Debug\net8.0\ref\MusicalInstruments.dll

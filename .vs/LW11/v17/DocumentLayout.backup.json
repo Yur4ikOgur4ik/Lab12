@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\PogU\\source\\repos\\Lab12\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|c:\\users\\pogu\\source\\repos\\lab12\\collections\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|solutionrelative:collections\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|c:\\users\\pogu\\source\\repos\\lab12\\musicalinstruments\\point.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|solutionrelative:musicalinstruments\\point.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{37B40D9D-01F0-4F4B-B2E3-410D6BF5ACD0}|LW11\\LW11.csproj|c:\\users\\pogu\\source\\repos\\lab12\\lw11\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37B40D9D-01F0-4F4B-B2E3-410D6BF5ACD0}|LW11\\LW11.csproj|solutionrelative:lw11\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|c:\\users\\pogu\\source\\repos\\lab12\\collections\\point.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|solutionrelative:collections\\point.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|c:\\users\\pogu\\source\\repos\\lab12\\collections\\list.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|solutionrelative:collections\\list.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|c:\\users\\pogu\\source\\repos\\lab12\\musicalinstruments\\piano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|solutionrelative:musicalinstruments\\piano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|c:\\users\\pogu\\source\\repos\\lab12\\musicalinstruments\\musicalinstrument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|solutionrelative:musicalinstruments\\musicalinstrument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,46 +46,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\Class1.cs",
-              "RelativeDocumentMoniker": "Collections\\Class1.cs",
-              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\Class1.cs",
-              "RelativeToolTip": "Collections\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Piano.cs",
+              "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\MusicalInstruments\\Piano.cs",
+              "RelativeDocumentMoniker": "MusicalInstruments\\Piano.cs",
+              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\MusicalInstruments\\Piano.cs",
+              "RelativeToolTip": "MusicalInstruments\\Piano.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAkwIoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T16:18:07.563Z",
+              "WhenOpened": "2025-04-17T17:10:25.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MusicalInstrument.cs",
+              "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\MusicalInstruments\\MusicalInstrument.cs",
+              "RelativeDocumentMoniker": "MusicalInstruments\\MusicalInstrument.cs",
+              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\MusicalInstruments\\MusicalInstrument.cs",
+              "RelativeToolTip": "MusicalInstruments\\MusicalInstrument.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAYwIEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T17:10:16.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "List.cs",
+              "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\List.cs",
+              "RelativeDocumentMoniker": "Collections\\List.cs",
+              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\List.cs",
+              "RelativeToolTip": "Collections\\List.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T16:21:52.598Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Point.cs",
-              "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\MusicalInstruments\\Point.cs",
-              "RelativeDocumentMoniker": "MusicalInstruments\\Point.cs",
-              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\MusicalInstruments\\Point.cs",
-              "RelativeToolTip": "MusicalInstruments\\Point.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACIAAAAnAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\Point.cs",
+              "RelativeDocumentMoniker": "Collections\\Point.cs",
+              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\Point.cs*",
+              "RelativeToolTip": "Collections\\Point.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T11:39:58.959Z",
+              "WhenOpened": "2025-04-15T16:18:07.563Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\LW11\\Program.cs",
               "RelativeDocumentMoniker": "LW11\\Program.cs",
-              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\LW11\\Program.cs",
-              "RelativeToolTip": "LW11\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAIAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\LW11\\Program.cs*",
+              "RelativeToolTip": "LW11\\Program.cs*",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAqwE4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-15T11:38:24.661Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

@@ -4,21 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MusicalInstruments;
 
 namespace Collections
 {
-    internal class List<T> : ICollection<T>
+    public class DoublyLinkedList<T>
     {
+        public Point<T>? Begin { get; private set; }
+        public Point<T>? End { get; private set; } // Добавляем указатель на конец списка
 
-        public Point<T> begin;
         public int Count
         {
             get
             {
                 int count = 0;
-                if (begin == null)
-                    return 0;
-                Point<T> current = begin;
+                Point<T>? current = Begin;
                 while (current != null)
                 {
                     count++;
@@ -28,86 +28,130 @@ namespace Collections
             }
         }
 
-        public List()
+        public DoublyLinkedList()
         {
-            begin = null;
+            Begin = null;
+            End = null;
         }
-
-
-        public bool IsReadOnly => throw new NotImplementedException();
 
         public void Add(T item)
         {
             Point<T> newPoint = new Point<T>(item);
-            if (begin == null)
-                begin = newPoint;
+            if (Begin == null)
+            {
+                Begin = newPoint;
+                End = newPoint;
+            }
             else
-                AddToEnd(newPoint);
+            {
+                End!.Next = newPoint;
+                newPoint.Prev = End;
+                End = newPoint;
+            }
         }
 
-        public void Add(int number, T item)
+        public void AddToBegin(T item)
         {
             Point<T> newPoint = new Point<T>(item);
-            if (number > Count + 1)
-                throw new Exception("number is bigger than number of elements in list");
-            if (number == 1)
+            if (Begin == null)
             {
-                AddToBegin(newPoint);
-                return;
+                Begin = newPoint;
+                End = newPoint;
             }
-
-            int count = 1;
-            Point<T> current = begin;
-            while (current.Next != null)
-            {
-                if (count + 1 == number)
-                    break;
-                count++;
-                current = current.Next;
-            }
-
-            if (current.Next == null)
-                AddToEnd(newPoint);
             else
             {
-                newPoint.Next = current.Next;
-                current.Next = newPoint;
+                newPoint.Next = Begin;
+                Begin.Prev = newPoint;
+                Begin = newPoint;
             }
         }
 
+        public void PrintList()
+        {
+            Point<T>? current = Begin;
+            int count = 1;
+            while (current != null)
+            {
+                Console.WriteLine($"{count}: {current.Data}");
+                current = current.Next;
+                count++;
+            }
+        }
 
+        // 1. Добавление элементов с номерами 1, 3, 5 и т.д.
+        public void AddOddIndexElements(List<T> elements)
+        {
+            for (int i = 0; i < elements.Count; i++)
+            {
+                if (i % 2 == 0) // Индексация с 0, поэтому четные индексы - это 1, 3, 5 позиции
+                {
+                    this.Add(elements[i]);
+                }
+            }
+        }
 
+        // 2. Удаление всех элементов, начиная с элемента с заданным именем, и до конца списка
+        public void RemoveFromElementToEnd(string name)
+        {
+            Point<T>? current = Begin;
+            bool found = false;
+
+            while (current != null)
+            {
+                if (current.Data is MusicalInstrument instrument && instrument.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+                {
+                    found = true;
+                    break;
+                }
+                current = current.Next;
+            }
+
+            if (found)
+            {
+                if (current!.Prev != null)
+                {
+                    current.Prev.Next = null;
+                    End = current.Prev;
+                }
+                else
+                {
+                    Begin = null;
+                    End = null;
+                }
+            }
+        }
+
+        // 3. Глубокое клонирование списка
+        public DoublyLinkedList<T> DeepClone()
+        {
+            DoublyLinkedList<T> newList = new DoublyLinkedList<T>();
+            Point<T>? current = Begin;
+
+            while (current != null)
+            {
+                if (current.Data is ICloneable cloneable)
+                {
+                    T clonedItem = (T)cloneable.Clone();
+                    newList.Add(clonedItem);
+                }
+                else
+                {
+                    // Если элемент не поддерживает клонирование, просто добавляем ссылку
+                    newList.Add(current.Data);
+                }
+                current = current.Next;
+            }
+
+            return newList;
+        }
+
+        // 4. Удаление списка из памяти
         public void Clear()
         {
-            begin = null;
-        }
-
-        public bool Contains(T item)
-        {
-            Point<T> current = begin;
-            while (current != null && !current.Data.Equals(item))
-                current = current.Next;
-            return current != null;
-        }
-
-        public void CopyTo(T[] array, int arrayIndex)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Remove(T item)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
+            
+            Begin = null;
+            End = null;
         }
     }
 }
+
