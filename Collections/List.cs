@@ -8,7 +8,7 @@ using MusicalInstruments;
 
 namespace Collections
 {
-    public class DoublyLinkedList<T>
+    public class DoublyLinkedList<T> where T : MusicalInstrument, IInit, ICloneable
     {
         public Point<T>? Begin { get; private set; }
         public Point<T>? End { get; private set; } // Добавляем указатель на конец списка
@@ -79,15 +79,65 @@ namespace Collections
         }
 
         // 1. Добавление элементов с номерами 1, 3, 5 и т.д.
-        public void AddOddIndexElements(List<T> elements)
+        public void AddOddIndexElements()
         {
-            for (int i = 0; i < elements.Count; i++)
+            Console.WriteLine("Enter a number of elements to add");
+            int count = ValidInput.GetPositiveInt();
+
+            // Создаем новый список для хранения элементов в нужном порядке
+            DoublyLinkedList<T> newList = this.DeepClone();
+            this.Clear();
+
+            int elementIndex = 0;
+            for (int i = 0; i < newList.Count + count; i++)
             {
-                if (i % 2 == 0) // Индексация с 0, поэтому четные индексы - это 1, 3, 5 позиции
+                if (elementIndex < newList.Count)
                 {
-                    this.Add(elements[i]);
+                    if (i % 2 == 0) // Нечетные позиции (1, 3, 5 и т.д.)
+                    {
+                        var rndPiano = new Piano();
+                        rndPiano.RandomInit();
+                        this.Add((T)(object)rndPiano);
+                    }
+                    else // Четные позиции (2, 4, 6 и т.д.)
+                    {
+
+                        this.Add(newList.GetElementAt(elementIndex));
+                        elementIndex++;
+
+
+                    }
                 }
             }
+            while (elementIndex < newList.Count)
+            {
+                this.Add(newList.GetElementAt(elementIndex));
+                elementIndex++;
+
+            };
+            Console.WriteLine(elementIndex);
+            Console.WriteLine(newList.Count);
+
+
+
+            
+        }
+
+        private T GetElementAt(int index)
+        {
+            if (index < 0 || index >= this.Count)
+                throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+
+            Point<T>? current = Begin;
+            for (int i = 0; i < index; i++)
+            {
+                if (current == null)
+                    throw new InvalidOperationException("Unexpected end of list.");
+                current = current.Next;
+            }
+            if (current == null)
+                throw new InvalidOperationException("Unexpected end of list.");
+            return current.Data!;
         }
 
         // 2. Удаление всех элементов, начиная с элемента с заданным именем, и до конца списка

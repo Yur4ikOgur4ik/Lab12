@@ -49,7 +49,7 @@ namespace LW11
             new MusicalInstrument("Clarinet", 11)
         };
 
-            instrumentList.AddOddIndexElements(newInstruments);
+            instrumentList.AddOddIndexElements();
             Console.WriteLine("List after adding odd index elements:");
             instrumentList.PrintList();
             Console.WriteLine();
