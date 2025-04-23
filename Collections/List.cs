@@ -5,20 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MusicalInstruments;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Collections
 {
     public class DoublyLinkedList<T> where T : MusicalInstrument, IInit, ICloneable
     {
-        public Point<T>? Begin { get; private set; }
-        public Point<T>? End { get; private set; } // Добавляем указатель на конец списка
+        public Point<T>? begin { get; private set; }
+        public Point<T>? end { get; private set; } // Добавляем указатель на конец списка
 
         public int Count
         {
             get
             {
                 int count = 0;
-                Point<T>? current = Begin;
+                Point<T>? current = begin;
                 while (current != null)
                 {
                     count++;
@@ -30,105 +31,115 @@ namespace Collections
 
         public DoublyLinkedList()
         {
-            Begin = null;
-            End = null;
+            begin = null;
+            end = null;
         }
 
         public void Add(T item)
         {
             Point<T> newPoint = new Point<T>(item);
-            if (Begin == null)
+            if (begin == null)
             {
-                Begin = newPoint;
-                End = newPoint;
+                begin = newPoint;
+                end = newPoint;
             }
             else
             {
-                End!.Next = newPoint;
-                newPoint.Prev = End;
-                End = newPoint;
+                end!.Next = newPoint;
+                newPoint.Prev = end;
+                end = newPoint;
             }
         }
 
-        public void AddToBegin(T item)
+        public void AddTobegin(T item)
         {
             Point<T> newPoint = new Point<T>(item);
-            if (Begin == null)
+            if (begin == null)
             {
-                Begin = newPoint;
-                End = newPoint;
+                begin = newPoint;
+                end = newPoint;
             }
             else
             {
-                newPoint.Next = Begin;
-                Begin.Prev = newPoint;
-                Begin = newPoint;
+                newPoint.Next = begin;
+                begin.Prev = newPoint;
+                begin = newPoint;
             }
         }
 
-        public void PrintList()
+        public void PrintList()//add for empty list 
         {
-            Point<T>? current = Begin;
-            int count = 1;
-            while (current != null)
+            if (Count == 0)
+                Console.WriteLine("List is empty");
+            else
             {
-                Console.WriteLine($"{count}: {current.Data}");
-                current = current.Next;
-                count++;
-            }
-        }
-
-        // 1. Добавление элементов с номерами 1, 3, 5 и т.д.
-        public void AddOddIndexElements()
-        {
-            Console.WriteLine("Enter a number of elements to add");
-            int count = ValidInput.GetPositiveInt();
-
-            // Создаем новый список для хранения элементов в нужном порядке
-            DoublyLinkedList<T> newList = this.DeepClone();
-            this.Clear();
-
-            int elementIndex = 0;
-            for (int i = 0; i < newList.Count + count; i++)
-            {
-                if (elementIndex < newList.Count)
+                Point<T>? current = begin;
+                int count = 1;
+                while (current != null)
                 {
-                    if (i % 2 == 0) // Нечетные позиции (1, 3, 5 и т.д.)
-                    {
-                        var rndPiano = new Piano();
-                        rndPiano.RandomInit();
-                        this.Add((T)(object)rndPiano);
-                    }
-                    else // Четные позиции (2, 4, 6 и т.д.)
-                    {
-
-                        this.Add(newList.GetElementAt(elementIndex));
-                        elementIndex++;
-
-
-                    }
+                    Console.WriteLine($"{count}: {current.Data}");
+                    current = current.Next;
+                    count++;
                 }
             }
-            while (elementIndex < newList.Count)
+        }
+        public MusicalInstrument CreateRandomInstr()
+        {
+            Random rnd = new Random();
+            MusicalInstrument instr;
+            int type = rnd.Next(3);
+            switch (type) 
             {
-                this.Add(newList.GetElementAt(elementIndex));
-                elementIndex++;
+                case 0:
+                    instr = new MusicalInstrument();
+                    break;
+                case 1:
+                    instr = new Guitar();
+                    break;
+                case 2:
+                    instr = new ElectroGuitar();
+                    break;
+                default:
+                    instr = new Piano();
+                    break;
 
-            };
-            Console.WriteLine(elementIndex);
-            Console.WriteLine(newList.Count);
+            }
+            instr.RandomInit();
+            instr.Name = instr.Name + " (Rnd)";
+            return instr;
+        }
+        // 1. Добавление элементов с номерами 1, 3, 5 и т.д.
+        public void AddOddIndexElements(int count)
+        {
+            Point<T>? current = begin;
 
+            //в идеальном посмтроение - достаточно перебрать элементы и переназначить ссылки, подумать над тем, чтобы сделать легче!!!!!!!!
+            int addedCount = 0;
+            while (current != null && addedCount < count)
+            {
+                // Создаём новый случайный инструмент
+                T randomInstrument = (T)(object)CreateRandomInstr();
 
+                // Добавляем новый узел после текущего узла
+                AddAfter(current, randomInstrument);
 
-            
+                addedCount++; // Увеличиваем счётчик добавленных элементов
+
+                // Переходим к следующему узлу (пропускаем только что добавленный)
+                current = current.Next?.Next; // Пропускаем два узла: текущий и добавленный
+            }
+
         }
 
         private T GetElementAt(int index)
         {
+            if (begin == null)
+                throw new InvalidOperationException("List is empty.");
+
             if (index < 0 || index >= this.Count)
                 throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
 
-            Point<T>? current = Begin;
+            Point<T>? current = begin;
             for (int i = 0; i < index; i++)
             {
                 if (current == null)
@@ -139,11 +150,28 @@ namespace Collections
                 throw new InvalidOperationException("Unexpected end of list.");
             return current.Data!;
         }
+        public void AddAfter(Point<T> node, T data)
+        {
+            if (node == null)
+                throw new ArgumentNullException(nameof(node));
 
+            Point<T> newNode = new Point<T>(data);
+
+            newNode.Next = node.Next; // Новый узел указывает на следующий узел
+            newNode.Prev = node;      // Новый узел указывает на текущий узел
+
+            if (node.Next != null)
+                node.Next.Prev = newNode; // Следующий узел указывает на новый узел
+
+            node.Next = newNode; // Текущий узел указывает на новый узел
+
+            if (node == end) // Если добавляем после последнего узла
+                end = newNode;
+        }
         // 2. Удаление всех элементов, начиная с элемента с заданным именем, и до конца списка
         public void RemoveFromElementToEnd(string name)
         {
-            Point<T>? current = Begin;
+            Point<T>? current = begin;
             bool found = false;
 
             while (current != null)
@@ -154,19 +182,19 @@ namespace Collections
                     break;
                 }
                 current = current.Next;
-            }
+            }//ishem name if not found 
 
             if (found)
             {
-                if (current!.Prev != null)
+                if (current!.Prev != null)//found ne v nachale
                 {
                     current.Prev.Next = null;
-                    End = current.Prev;
+                    end = current.Prev;
                 }
-                else
+                else// elsi v nachale to srazu clear
                 {
-                    Begin = null;
-                    End = null;
+                    begin = null;
+                    end = null;
                 }
             }
         }
@@ -175,7 +203,7 @@ namespace Collections
         public DoublyLinkedList<T> DeepClone()
         {
             DoublyLinkedList<T> newList = new DoublyLinkedList<T>();
-            Point<T>? current = Begin;
+            Point<T>? current = begin;
 
             while (current != null)
             {
@@ -187,7 +215,7 @@ namespace Collections
                 else
                 {
                     // Если элемент не поддерживает клонирование, просто добавляем ссылку
-                    newList.Add(current.Data);
+                    throw new Exception("Type does not support cloning");
                 }
                 current = current.Next;
             }
@@ -199,8 +227,8 @@ namespace Collections
         public void Clear()
         {
             
-            Begin = null;
-            End = null;
+            begin = null;
+            end = null;
         }
     }
 }
