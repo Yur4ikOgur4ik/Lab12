@@ -6,6 +6,7 @@ using System.Transactions;
 using System.Collections.Generic;
 using System.Reflection;
 using Collections;
+using System.Xml.Linq;
 
 
 namespace LW11
@@ -13,21 +14,123 @@ namespace LW11
     public class Program
     {
         static DoublyLinkedList<MusicalInstrument> instrumentList = new DoublyLinkedList<MusicalInstrument>();
+        static MyOpenHs<MusicalInstrument> hashTable = new MyOpenHs<MusicalInstrument>(4, 0.72);
+        
+
+        #region Enter MI
+        static string InputInstrumentType()
+        {
+            string instrType;
+            Console.WriteLine("Choose an instrument: \n1) - Musical instrument (name, id)\n2) - Guitar (name, id, num of strings)\n3) - Electroguitar (guitar + power source)\n4) - Piano (name, id, key layout, number of keys)");
+            int typeInt;
+            typeInt = ValidInput.GetPositiveInt();
+            while (typeInt > 5)
+            {
+                Console.WriteLine("Enter a number between 1 and 4");
+                typeInt = ValidInput.GetPositiveInt();
+            }
+            switch (typeInt)
+            {
+                case 1:
+                    instrType = "MusicalInstrument";
+                    break;
+                case 2:
+                    instrType = "Guitar";
+                    break;
+                case 3:
+                    instrType = "Eguitar";
+                    break;
+                case 4:
+                    instrType = "Piano";
+                    break;
+                default:
+                    instrType = "Aboba";
+                    break;
+            }
+            return instrType;
+        }
+        
+        static MusicalInstrument GetMusicalInstrument()
+        {
+            string instrType;
+            instrType = InputInstrumentType();
+            MusicalInstrument instr = new();
+            switch (instrType)
+            {
+                case "MusicalInstrument":
+                    instr = new MusicalInstrument();
+                    instr.Init();
+                    break;
+                case "Guitar":
+                    instr = new Guitar();
+                    instr.Init();
+                    break;
+                case "Eguitar":
+                    instr = new ElectroGuitar();
+                    instr.Init();
+                    break;
+                case "Piano":
+                    instr = new Piano();
+                    instr.Init();
+                    break;
+                default:
+                    Console.WriteLine("An unexpected error ocurred");
+                    break;
+
+            }
+            return instr;
+        }
+        #endregion
         static void Main()//ADD MENU!!!!!!!!!!!!!!!!!!!!!!
         {
+
+            {
+                while (true)
+                {
+                    Console.WriteLine("\n=== Main menu ===");
+                    Console.WriteLine("1. List");
+                    Console.WriteLine("2. Hash table");
+                    Console.WriteLine("0. Exit");
+
+                    int choice = ValidInput.GetInt("Enter your choice");
+
+                    switch (choice)
+                    {
+                        case 1:
+                            ListMenu();
+                            break;
+                        case 2:
+                            HashTableMenu();
+                            break;
+                        case 0:
+                            return;
+                        default:
+                            Console.WriteLine("Wrong choice, try again");
+                            break;
+                    }
+                }
+            }
+
+
             
+
+        }
+        #region Меню работы со списком
+        static void ListMenu()
+        {
             while (true)
             {
-                Console.WriteLine("\n=== Musical Instruments List Manager ===");
-                Console.WriteLine("1. Show current list");
-                Console.WriteLine("2. Add random elements to odd positions");
-                Console.WriteLine("3. Remove elements starting from specified name");
-                Console.WriteLine("4. Create deep clone of the list");
-                Console.WriteLine("5. Clear the list");
-                Console.WriteLine("6. Load test data");
-                Console.WriteLine("0. Exit");
+                Console.WriteLine("\n=== List menu ===");
+                Console.WriteLine("1. Print list");
+                Console.WriteLine("2. Add elements on odd positions");
+                Console.WriteLine("3. Удалить элементы, начиная с указанного имени");
+                Console.WriteLine("4. Создать глубокую копию списка");
+                Console.WriteLine("5. Очистить список");
+                Console.WriteLine("6. Загрузить тестовые данные");
+                Console.WriteLine("0. Вернуться в главное меню");
 
-                int choice = ValidInput.GetInt("Enter your choice (0-6):");
+                int choice = ValidInput.GetInt("Введите ваш выбор:");
+
                 switch (choice)
                 {
                     case 1:
@@ -47,100 +150,23 @@ namespace LW11
                         break;
                     case 6:
                         InitializeDefaultInstruments();
-                        Console.WriteLine("List cleared. Test data loaded");
+                        Console.WriteLine("Старый список очищен. Тестовые данные загружены.");
                         break;
                     case 0:
                         return;
                     default:
-                        Console.WriteLine("Wrong choice, try again");
+                        Console.WriteLine("Неверный выбор. Попробуйте снова.");
                         break;
                 }
-
             }
-            
-
-            #region ToDelete
-            //// 1. Сформировать двунаправленный список
-            //DoublyLinkedList<MusicalInstrument> instrumentList = new DoublyLinkedList<MusicalInstrument>();
-
-            //// Создаем несколько музыкальных инструментов
-            //Piano piano1 = new Piano("Grand Piano", 1, "Acoustic", 88);
-            //Piano piano2 = new Piano("Electric Piano", 2, "Digital", 76);
-            //MusicalInstrument guitar = new MusicalInstrument("Guitar", 3);
-            //MusicalInstrument violin = new MusicalInstrument("Violin", 4);
-            //MusicalInstrument drums = new MusicalInstrument("Drums", 5);
-            //MusicalInstrument flute = new MusicalInstrument("Flute", 6);
-
-            //// Добавляем инструменты в список
-            //instrumentList.Add(piano1);
-            //instrumentList.Add(piano2);
-            //instrumentList.Add(guitar);
-            //instrumentList.Add(violin);
-            //instrumentList.Add(drums);
-            //instrumentList.Add(flute);
-
-            //// 2. Распечатать полученный список
-            //Console.WriteLine("Original List:");
-            //instrumentList.PrintList();
-            //Console.WriteLine();
-
-            //// 3. Выполнить обработку списка:
-            //// а) Добавить элементы с номерами 1, 3, 5 и т.д.  
-
-            //Console.WriteLine("Enter a number of elements to add");
-            //int count = ValidInput.GetPositiveInt();
-            //instrumentList.AddOddIndexElements(count);
-            //Console.WriteLine("List after adding odd index elements:");
-            //instrumentList.PrintList();
-            //Console.WriteLine();
-
-            ////б) Удалить из списка все элементы, начиная с элемента с заданным именем +  5. Выполнить глубокое клонирование списка
-            //DoublyLinkedList<MusicalInstrument> clonedList = instrumentList.DeepClone();
-            //Console.WriteLine("Enter instrument name to start removal from:");
-            //string nameToRemove = Console.ReadLine() ?? "";
-            //instrumentList.RemoveFromElementToEnd(nameToRemove);
-            //instrumentList.begin.Data.Name = "Adasdasdsad";
-
-            //Console.WriteLine($"List after removing from '{nameToRemove}' to end:");
-            //instrumentList.PrintList();
-            //Console.WriteLine();
-            //Console.WriteLine("Cloned list:");
-            //clonedList.PrintList();
-            //Console.WriteLine();
-
-
-
-
-
-
-            ////6.Удалить список из памяти
-            //instrumentList.Clear();
-            //Console.WriteLine("Original list after clearing:");
-            //instrumentList.PrintList(); // Должен быть пуст
-            //Console.WriteLine();
-
-            //Console.WriteLine("Cloned list (should still exist):");
-            //clonedList.PrintList();
-            #endregion
-
-        }
-        static void InitializeDefaultInstruments()
-        {
-            instrumentList.Clear();
-            instrumentList.Add(new Piano("Grand Piano", 1, "Acoustic", 88));
-            instrumentList.Add(new Piano("Electric Piano", 2, "Digital", 76));
-            instrumentList.Add(new MusicalInstrument("Guitar", 3));
-            instrumentList.Add(new MusicalInstrument("Violin", 4));
-            instrumentList.Add(new MusicalInstrument("Drums", 5));
-            instrumentList.Add(new MusicalInstrument("Flute", 6));
         }
 
         static void ShowList()
         {
-            Console.WriteLine("\nCurrent instruments list:");
+            Console.WriteLine("\nТекущий список инструментов:");
             if (instrumentList.Count == 0)
             {
-                Console.WriteLine("The list is empty");
+                Console.WriteLine("Список пуст.");
             }
             else
             {
@@ -150,9 +176,9 @@ namespace LW11
 
         static void AddOddIndexElements()
         {
-            int count = ValidInput.GetPositiveInt("Enter number of elements to add:");
+            int count = ValidInput.GetPositiveInt("Введите количество элементов для добавления:");
             instrumentList.AddOddIndexElements(count);
-            Console.WriteLine($"Added {count} elements to odd positions");
+            Console.WriteLine($"Добавлено {count} элементов на нечётные позиции.");
             ShowList();
         }
 
@@ -160,31 +186,32 @@ namespace LW11
         {
             if (instrumentList.Count == 0)
             {
-                Console.WriteLine("The list is empty, nothing to remove");
+                Console.WriteLine("Список пуст. Нечего удалять.");
                 return;
             }
 
             ShowList();
-            Console.Write("\nEnter instrument name to start removal from: ");
-            string nameToRemove = Console.ReadLine() ?? "";
+            Console.Write("Введите имя инструмента, с которого начать удаление: ");
+            string nameToRemove = Console.ReadLine().Trim();
+
             instrumentList.RemoveFromElementToEnd(nameToRemove);
-            Console.WriteLine($"Elements starting from '{nameToRemove}' have been removed");
+            Console.WriteLine($"Удалены все элементы, начиная с '{nameToRemove}'.");
             ShowList();
         }
 
         static void CloneList()
         {
             var clonedList = instrumentList.DeepClone();
-            Console.WriteLine("\nCreated deep clone of the list:");
+            Console.WriteLine("\nСоздана глубокая копия списка:");
             clonedList.PrintList();
 
-            Console.WriteLine("\nModifying original list to verify cloning:");
+            Console.WriteLine("\nИзменяем оригинальный список...");
             if (instrumentList.Count > 0)
             {
-                instrumentList.begin.Data.Name = "Modified Name";
-                Console.WriteLine("Original list after modification:");
+                instrumentList.begin.Data.Name = "Модифицированное имя";
+                Console.WriteLine("Оригинальный список после изменения:");
                 instrumentList.PrintList();
-                Console.WriteLine("\nClone remains unchanged:");
+                Console.WriteLine("\nКлон остался без изменений:");
                 clonedList.PrintList();
             }
         }
@@ -192,7 +219,126 @@ namespace LW11
         static void ClearList()
         {
             instrumentList.Clear();
-            Console.WriteLine("The list has been cleared");
+            Console.WriteLine("Список очищен.");
         }
+
+        static void InitializeDefaultInstruments()
+        {
+            instrumentList.Clear();
+            instrumentList.Add(new Piano("Grand Piano", 1, "Acoustic", 88));
+            instrumentList.Add(new Piano("Digital Piano", 2, "Digital", 76));
+            instrumentList.Add(new Guitar("Acoustic Guitar", 3, 6));
+            instrumentList.Add(new Guitar("Bass Guitar", 4, 4));
+            instrumentList.Add(new MusicalInstrument("Drums", 5));
+            instrumentList.Add(new MusicalInstrument("Flute", 6));
+        }
+        #endregion
+        #region Меню работы с хэш-таблицей
+        static void HashTableMenu()
+        {
+            while (true)
+            {
+                Console.WriteLine("\n=== Hash table menu ===");
+                Console.WriteLine("1. Fill");
+                Console.WriteLine("2. Find");
+                Console.WriteLine("3. Delete");
+                Console.WriteLine("4. Print Hashset");
+                Console.WriteLine("5. Add element");
+                Console.WriteLine("0. Get back to main menu");
+
+                int choice = ValidInput.GetInt("Enter your choice");
+
+                switch (choice)
+                {
+                    case 1:
+                        FillHashTable();
+                        break;
+                    case 2:
+                        SearchInstrument();
+                        break;
+                    case 3:
+                        RemoveInstrument();
+                        break;
+                    case 4:
+                        PrintHS();
+                        break;
+                    case 5:
+                        AddHashTable();
+                        break;
+                    
+                    case 0:
+                        return;
+                    default:
+                        Console.WriteLine("Wrong choice, try again");
+                        break;
+                }
+            }
+        }
+
+        static void FillHashTable()
+        {
+            hashTable.Clear();
+
+            hashTable.Add(new Piano("Grand Piano", 1, "Octave", 88));
+            hashTable.Add(new Piano("Digital Piano", 2, "Scale", 76));
+            hashTable.Add(new Guitar("Acoustic Guitar", 3, 6));
+            hashTable.Add(new Guitar("Bass Guitar", 4, 4));
+            hashTable.Add(new MusicalInstrument("Drums", 5));
+            hashTable.Add(new MusicalInstrument("Flute", 6));
+
+
+            Console.WriteLine("Hash table filled successfully");
+            Console.WriteLine(hashTable.PrintHS());
+        }
+
+        static void SearchInstrument()
+        {
+            if (hashTable.Count == 0)
+            {
+                Console.WriteLine("Hash table is empty, Fill it firts");
+                return;
+            }
+
+            Console.Write("Enter MusicalInstrument to add: ");
+            MusicalInstrument name = GetMusicalInstrument();
+            int index;
+            MusicalInstrument currentInstrumentToDelete = hashTable.Find(name, out index);
+            if (currentInstrumentToDelete != null)
+            {
+                Console.WriteLine($"Found instrument: {currentInstrumentToDelete.ToString()}, at index: {index}");
+            }
+            else
+                Console.WriteLine("Instrument not found");
+
+            
+        }
+        static void PrintHS()
+        {
+            Console.WriteLine(hashTable.PrintHS());
+        }
+        static void RemoveInstrument()
+        {
+            MusicalInstrument name = GetMusicalInstrument();
+
+            if (hashTable.Remove(name))
+            {
+                Console.WriteLine("Instrument successfully deleted");
+            }
+            else
+            {
+                Console.WriteLine("Element has been deleted earlier, or it was not in the HashTable");
+            }
+
+            
+        }
+
+        static void AddHashTable()
+        {
+            MusicalInstrument instrToAdd = GetMusicalInstrument();
+            hashTable.Add(instrToAdd);
+
+            
+        }
+#endregion
     }
 }

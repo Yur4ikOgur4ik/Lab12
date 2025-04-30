@@ -9,6 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicalInstruments", "Music
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collections", "Collections\Collections.csproj", "{7333A9FF-86AD-419B-A385-1AEFBB2055FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Tests\Test\Test.csproj", "{E69194AD-7331-4CA2-AA14-98E842A63068}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1308572A-6341-4A76-B1E3-29F97A804FFA} = {1308572A-6341-4A76-B1E3-29F97A804FFA}
+		{37B40D9D-01F0-4F4B-B2E3-410D6BF5ACD0} = {37B40D9D-01F0-4F4B-B2E3-410D6BF5ACD0}
+		{7333A9FF-86AD-419B-A385-1AEFBB2055FA} = {7333A9FF-86AD-419B-A385-1AEFBB2055FA}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +34,10 @@ Global
 		{7333A9FF-86AD-419B-A385-1AEFBB2055FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7333A9FF-86AD-419B-A385-1AEFBB2055FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7333A9FF-86AD-419B-A385-1AEFBB2055FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E69194AD-7331-4CA2-AA14-98E842A63068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E69194AD-7331-4CA2-AA14-98E842A63068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E69194AD-7331-4CA2-AA14-98E842A63068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E69194AD-7331-4CA2-AA14-98E842A63068}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

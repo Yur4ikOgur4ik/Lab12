@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicalInstruments;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Collections
 {
-    internal class MyOpenHs<T>
+    public class MyOpenHs<T> where T : MusicalInstrument, IInit, ICloneable
     {
         public HashPoint<T>[] set; //начало списка
         int count = 0; //кол-во элементов
@@ -24,8 +25,9 @@ namespace Collections
             set = new HashPoint<T>[capacity]; // создали массив элементов
             LoadFactor = loadfactor;
         }
-        public void Add(T item)
+        public void Add(T itemToAdd)
         {
+            T item = (T)(object)itemToAdd;
             if (item == null)
                 throw new Exception("Element is empty");
             if (count >= LoadFactor * set.Length)
@@ -78,6 +80,7 @@ namespace Collections
         {
             for (int i = 0; i < set.Length; i++)
                 set[i] = null;
+            count = 0;
         }
 
         public void Resize()
@@ -136,8 +139,9 @@ namespace Collections
             throw new NotImplementedException();
         }
 
-        public bool Remove(T item)
+        public bool Remove(MusicalInstrument itemToDelete)
         {
+            T item = (T)(object)itemToDelete;
             if (item == null) return false;//не удалили
             int index = Math.Abs(item.GetHashCode()) % set.Length;//нидекс в массиве
             if (set[index] != null)//элемент может быть непустой или пустой (null)
@@ -170,6 +174,30 @@ namespace Collections
                 return false;//если пустой, то такого элемента не было
             return false;
 
+        }
+        public T Find(MusicalInstrument itemToFind, out int indexCount)
+        {
+            indexCount = 0;
+            T item = (T)(object)itemToFind;
+
+            if (item == null) return default;
+
+            int index = Math.Abs(item.GetHashCode()) % set.Length;
+
+            for (int i = 0; i < set.Length; i++)
+            {
+                int currentIndex = (index + i) % set.Length;
+                if (set[currentIndex] == null) return default; // конец цепочки пробирования — элемент не найден
+                if (!set[currentIndex].IsDeleted && set[currentIndex].Data.Equals(item))
+                {
+                    indexCount = currentIndex;
+                    return set[currentIndex].Data; // нашли совпадение
+                }
+                    
+                
+            }
+
+            return default; // элемент не найден
         }
     }
 }

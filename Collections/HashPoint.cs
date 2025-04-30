@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Collections
 {
-    internal class HashPoint<T>
+    public class HashPoint<T>
     {
         public T? Data { get; set; }
         public bool IsDeleted { get; set; } //для отметки удаленных
@@ -26,11 +26,6 @@ namespace Collections
         public override string ToString()
         {
             return Data?.ToString() ?? "null";
-        }
-
-        public override int GetHashCode()
-        {
-            return Data?.GetHashCode()??0;
         }
     }
 }

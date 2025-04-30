@@ -1,0 +1,56 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "LW11/1.0.0": {
+        "dependencies": {
+          "Collections": "1.0.0",
+          "MusicalInstruments": "1.0.0"
+        },
+        "runtime": {
+          "LW11.dll": {}
+        }
+      },
+      "Collections/1.0.0": {
+        "dependencies": {
+          "MusicalInstruments": "1.0.0"
+        },
+        "runtime": {
+          "Collections.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "MusicalInstruments/1.0.0": {
+        "runtime": {
+          "MusicalInstruments.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LW11/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Collections/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MusicalInstruments/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

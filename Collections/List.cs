@@ -51,21 +51,7 @@ namespace Collections
             }
         }
 
-        public void AddTobegin(T item)
-        {
-            Point<T> newPoint = new Point<T>(item);
-            if (begin == null)
-            {
-                begin = newPoint;
-                end = newPoint;
-            }
-            else
-            {
-                newPoint.Next = begin;
-                begin.Prev = newPoint;
-                begin = newPoint;
-            }
-        }
+
 
         public void PrintList()//add for empty list 
         {
@@ -131,25 +117,6 @@ namespace Collections
 
         }
 
-        private T GetElementAt(int index)
-        {
-            if (begin == null)
-                throw new InvalidOperationException("List is empty.");
-
-            if (index < 0 || index >= this.Count)
-                throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
-
-            Point<T>? current = begin;
-            for (int i = 0; i < index; i++)
-            {
-                if (current == null)
-                    throw new InvalidOperationException("Unexpected end of list.");
-                current = current.Next;
-            }
-            if (current == null)
-                throw new InvalidOperationException("Unexpected end of list.");
-            return current.Data!;
-        }
         public void AddAfter(Point<T> node, T data)
         {
             if (node == null)
