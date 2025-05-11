@@ -8,7 +8,21 @@ namespace Test
     [TestClass]
     public class DoublyLinkedListTests
     {
-        // 1. Тестирование метода Add
+
+        [TestMethod]
+        public void Point_DefaultConstructor_ShouldInitializeWithDefaultValues()
+        {
+            // Act
+            var point = new Point<string>();
+
+            // Assert
+            Assert.IsNull(point.Data);         // Data должен быть default(T), т.е. null для string
+            Assert.IsNull(point.Next);         // Next должен быть null
+            Assert.IsNull(point.Prev);         // Prev должен быть null
+        }
+
+
+        // 1. Тестирование метода Add - добавление элементов
         [TestMethod]
         public void Add_ShouldAddElementsToTheList()
         {
@@ -25,49 +39,40 @@ namespace Test
             Assert.AreEqual(2, list.Count);
             Assert.AreEqual("Guitar", list.begin.Data.Name);
             Assert.AreEqual("Piano", list.end.Data.Name);
+            Assert.IsNull(list.begin.Prev);
+            Assert.IsNull(list.end.Next);
+            Assert.AreSame(list.begin.Next, list.end);
+            Assert.AreSame(list.end.Prev, list.begin);
         }
 
-        // 2. Тестирование метода PrintList (через перехват вывода в консоль)
+
+
+
+        // 3. Тестирование метода AddOddIndexElements - добавление на нечётные позиции
         [TestMethod]
-        public void PrintList_ShouldPrintElementsCorrectly()
+        public void AddOddIndexElements_ShouldInsertRandomInstrumentsAtOddPositions()
         {
             // Arrange
             var list = new DoublyLinkedList<MusicalInstrument>();
-            var guitar = new Guitar { Name = "Guitar" };
-            var piano = new Piano { Name = "Piano" };
-            list.Add(guitar);
-            list.Add(piano);
-
-            // Act & Assert
-            using (var consoleOutput = new ConsoleOutput())
-            {
-                list.PrintList();
-                string output = consoleOutput.GetOutput();
-                StringAssert.Contains(output, "1: Guitar");
-                StringAssert.Contains(output, "2: Piano");
-            }
-        }
-
-        // 3. Тестирование метода AddOddIndexElements
-        [TestMethod]
-        public void AddOddIndexElements_ShouldAddRandomElementsAtOddIndexes()
-        {
-            // Arrange
-            var list = new DoublyLinkedList<MusicalInstrument>();
-            var guitar = new Guitar { Name = "Guitar" };
-            var piano = new Piano { Name = "Piano" };
-            list.Add(guitar);
-            list.Add(piano);
+            var instrument1 = new Guitar { Name = "Guitar" };
+            var instrument2 = new Piano { Name = "Piano" };
+            list.Add(instrument1);
+            list.Add(instrument2);
 
             // Act
-            list.AddOddIndexElements(2); // Добавляем 2 случайных элемента
+            list.AddOddIndexElements(2); // Добавляем 2 случайных инструмента
 
             // Assert
             Assert.AreEqual(4, list.Count);
-            Assert.IsTrue(list.begin.Next.Data.Name.Contains("(Rnd)")); // Проверяем, что добавленные элементы содержат "(Rnd)"
+
+            var secondNode = list.begin.Next;
+            var thirdNode = secondNode.Next;
+
+            Assert.IsTrue(secondNode.Data.Name.Contains("(Rnd)"));
+            Assert.IsTrue(thirdNode.Next.Data.Name.Contains("(Rnd)"));
         }
 
-        // 4. Тестирование метода RemoveFromElementToEnd
+        // 4. Тестирование метода RemoveFromElementToEnd - удаление от найденного до конца
         [TestMethod]
         public void RemoveFromElementToEnd_ShouldRemoveElementsStartingFromGivenName()
         {
@@ -87,11 +92,33 @@ namespace Test
             Assert.AreEqual(1, list.Count);
             Assert.AreEqual("Guitar", list.begin.Data.Name);
             Assert.IsNull(list.begin.Next);
+            Assert.IsNull(list.end.Next);
         }
 
-        // 5. Тестирование метода DeepClone
         [TestMethod]
-        public void DeepClone_ShouldCreateDeepCopyOfTheList()
+        public void RemoveFromElementToEnd_ShouldRemoveAllElementsWhenFirstElementIsRemoved()
+        {
+            // Arrange
+            var list = new DoublyLinkedList<MusicalInstrument>();
+            var guitar = new Guitar { Name = "Guitar" };
+            var piano = new Piano { Name = "Piano" };
+            var electroGuitar = new ElectroGuitar { Name = "ElectroGuitar" };
+            list.Add(guitar);
+            list.Add(piano);
+            list.Add(electroGuitar);
+
+            // Act
+            list.RemoveFromElementToEnd("Guitar");
+
+            // Assert
+            Assert.AreEqual(0, list.Count);
+            Assert.IsNull(list.begin);
+            Assert.IsNull(list.end);
+        }
+
+        // 5. Тестирование метода DeepClone - глубокое копирование списка
+        [TestMethod]
+        public void DeepClone_ShouldCreateIndependentCopyOfList()
         {
             // Arrange
             var list = new DoublyLinkedList<MusicalInstrument>();
@@ -104,21 +131,20 @@ namespace Test
             var clonedList = list.DeepClone();
 
             // Assert
-            Assert.AreEqual(2, clonedList.Count);
-            Assert.AreNotSame(list.begin.Data, clonedList.begin.Data); // Проверяем, что это разные объекты
+            Assert.AreEqual(list.Count, clonedList.Count);
+            Assert.AreNotSame(list.begin.Data, clonedList.begin.Data); // разные объекты
             Assert.AreEqual(list.begin.Data.Name, clonedList.begin.Data.Name);
+            Assert.AreEqual(list.end.Data.Name, clonedList.end.Data.Name);
         }
 
-        // 6. Тестирование метода Clear
+        // 6. Тестирование метода Clear - очистка списка
         [TestMethod]
-        public void Clear_ShouldRemoveAllElementsFromTheList()
+        public void Clear_ShouldRemoveAllNodesAndResetPointers()
         {
             // Arrange
             var list = new DoublyLinkedList<MusicalInstrument>();
             var guitar = new Guitar { Name = "Guitar" };
-            var piano = new Piano { Name = "Piano" };
             list.Add(guitar);
-            list.Add(piano);
 
             // Act
             list.Clear();
@@ -131,7 +157,7 @@ namespace Test
 
         // 7. Тестирование пустого списка
         [TestMethod]
-        public void EmptyList_ShouldHaveZeroCountAndNullPointers()
+        public void EmptyList_ShouldHaveZeroCountAndNullReferences()
         {
             // Arrange
             var list = new DoublyLinkedList<MusicalInstrument>();
@@ -142,44 +168,46 @@ namespace Test
             Assert.IsNull(list.end);
         }
 
-        // 8. Тестирование метода CreateRandomInstr
+        // 8. Тестирование метода CreateRandomInstr - генерация случайного инструмента
         [TestMethod]
-        public void CreateRandomInstr_ShouldReturnRandomInstrumentWithNameSuffix()
+        public void CreateRandomInstr_ShouldReturnValidInstrumentWithSuffix()
         {
             // Arrange
             var list = new DoublyLinkedList<MusicalInstrument>();
 
             // Act
-            var randomInstrument = list.CreateRandomInstr();
+            var instrument = list.CreateRandomInstr();
 
             // Assert
-            Assert.IsNotNull(randomInstrument);
-            StringAssert.Contains(randomInstrument.Name, "(Rnd)");
+            Assert.IsNotNull(instrument);
+            Assert.IsTrue(instrument.Name.Contains("(Rnd)"));
         }
+        [TestMethod]
+        public void ToStringInPoint_ReturnsValue()
+        {
+            var newInstr = new MusicalInstrument("Name", 1);
+            var newPoint = new Point<MusicalInstrument>(newInstr);
+
+            var toString = newPoint.ToString();
+
+            Assert.AreEqual(toString, newInstr.ToString());
+        }
+
+        [TestMethod]
+        public void ToStringInPoint_ReturnsNull() 
+        { 
+            var newInstr = new MusicalInstrument();
+            newInstr = null;
+
+            var newPoint = new Point<MusicalInstrument>(newInstr);
+            string toString = newPoint.ToString();
+
+            Assert.AreEqual("null", toString);
+        }
+
+
+
     }
-
-    // Вспомогательный класс для перехвата вывода в консоль
-    public class ConsoleOutput : IDisposable
-    {
-        private readonly StringWriter _stringWriter;
-        private readonly TextWriter _originalOutput;
-
-        public ConsoleOutput()
-        {
-            _stringWriter = new StringWriter();
-            _originalOutput = Console.Out;
-            Console.SetOut(_stringWriter);
-        }
-
-        public string GetOutput()
-        {
-            return _stringWriter.ToString();
-        }
-
-        public void Dispose()
-        {
-            Console.SetOut(_originalOutput);
-            _stringWriter.Dispose();
-        }
-    }
-}
+        
+    
+  }

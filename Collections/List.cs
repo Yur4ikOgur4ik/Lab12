@@ -53,22 +53,22 @@ namespace Collections
 
 
 
-        public void PrintList()//add for empty list 
-        {
-            if (Count == 0)
-                Console.WriteLine("List is empty");
-            else
-            {
-                Point<T>? current = begin;
-                int count = 1;
-                while (current != null)
-                {
-                    Console.WriteLine($"{count}: {current.Data}");
-                    current = current.Next;
-                    count++;
-                }
-            }
-        }
+        //public void PrintList()//add for empty list 
+        //{
+        //    if (Count == 0)
+        //        Console.WriteLine("List is empty");
+        //    else
+        //    {
+        //        Point<T>? current = begin;
+        //        int count = 1;
+        //        while (current != null)
+        //        {
+        //            Console.WriteLine($"{count}: {current.Data}");
+        //            current = current.Next;
+        //            count++;
+        //        }
+        //    }
+        //}
         public MusicalInstrument CreateRandomInstr()
         {
             Random rnd = new Random();
@@ -165,6 +165,7 @@ namespace Collections
                 }
             }
         }
+
 
         // 3. Глубокое клонирование списка
         public DoublyLinkedList<T> DeepClone()

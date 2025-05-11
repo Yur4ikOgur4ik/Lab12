@@ -170,7 +170,7 @@ namespace LW11
             }
             else
             {
-                instrumentList.PrintList();
+                //instrumentList.PrintList();
             }
         }
 
@@ -203,16 +203,16 @@ namespace LW11
         {
             var clonedList = instrumentList.DeepClone();
             Console.WriteLine("\nСоздана глубокая копия списка:");
-            clonedList.PrintList();
+            //clonedList.PrintList();
 
             Console.WriteLine("\nИзменяем оригинальный список...");
             if (instrumentList.Count > 0)
             {
                 instrumentList.begin.Data.Name = "Модифицированное имя";
                 Console.WriteLine("Оригинальный список после изменения:");
-                instrumentList.PrintList();
+                //instrumentList.PrintList();
                 Console.WriteLine("\nКлон остался без изменений:");
-                clonedList.PrintList();
+                //clonedList.PrintList();
             }
         }
 
