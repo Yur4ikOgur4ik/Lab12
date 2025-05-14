@@ -265,7 +265,6 @@ namespace LW11
                     case 5:
                         AddHashTable();
                         break;
-                    
                     case 0:
                         return;
                     default:
@@ -315,11 +314,17 @@ namespace LW11
         static void PrintHS()
         {
             Console.WriteLine(hashTable.PrintHS());
+            Console.WriteLine($"Capacity - {hashTable.Capacity}");
         }
         static void RemoveInstrument()
         {
+            if (hashTable.Count == 0)
+            {
+                Console.WriteLine("Hash table is empty, Fill it first");
+                return;
+            }
             MusicalInstrument name = GetMusicalInstrument();
-
+            
             if (hashTable.Remove(name))
             {
                 Console.WriteLine("Instrument successfully deleted");
@@ -339,6 +344,7 @@ namespace LW11
 
             
         }
-#endregion
+        
+        #endregion
     }
 }

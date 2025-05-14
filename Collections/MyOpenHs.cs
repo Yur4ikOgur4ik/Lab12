@@ -14,6 +14,7 @@ namespace Collections
         double LoadFactor; //коэффициент заполненности
 
         public int Count => count;
+        public int Capacity => set.Length;
         public bool IsReadOnly => throw new NotImplementedException();
 
         public MyOpenHs(int capacity = 10, double loadfactor = 0.72)
@@ -25,33 +26,68 @@ namespace Collections
             set = new HashPoint<T>[capacity]; // создали массив элементов
             LoadFactor = loadfactor;
         }
+        //public void Add(T itemToAdd) ---------NOT FIXED, TO SHOW WHY-----------------
+        //{
+        //    T item = (T)(object)itemToAdd;
+
+        //    if (item == null)
+        //        throw new Exception("Element is empty");
+
+        //    if (count >= LoadFactor * set.Length)
+        //        Resize(); //Увеличить размер в два раза
+
+        //    int index = Math.Abs(item.GetHashCode()) % set.Length;
+
+        //    if (set[index] == null || set[index].IsDeleted)
+        //    {
+        //        set[index] = new HashPoint<T>(item);
+        //        count++;
+        //    }
+        //    else//ищем место
+        //    {
+        //        for (int i = 0; i < set.Length; i++)
+        //        {
+        //            int newIndex = (index + i) % set.Length; //новый индекс
+        //            if (set[newIndex] != null &&
+        //                set[newIndex].Data.Equals(item)) //есть такой элемент //izza etogo, t.e. proveryalsya tolko 1 elem, 
+        //                return;
+        //            if (set[newIndex] == null || set[newIndex].IsDeleted)
+        //            {
+        //                set[newIndex] = new HashPoint<T>(item);
+        //                count++;
+        //                return;
+        //            }
+        //        }
+        //    }
+        //}
+
         public void Add(T itemToAdd)
         {
             T item = (T)(object)itemToAdd;
             if (item == null)
                 throw new Exception("Element is empty");
+
             if (count >= LoadFactor * set.Length)
-                Resize(); //Увеличить размер в два раза
-            int index = Math.Abs(item.GetHashCode()) % set.Length;
-            if (set[index] == null || set[index].IsDeleted)
+                Resize();//if bigger, then x2
+
+            int index = Math.Abs(item.GetHashCode()) % set.Length;//get hc
+
+            for (int i = 0; i < set.Length; i++)
             {
-                set[index] = new HashPoint<T>(item);
-                count++;
-            }
-            else//ищем место
-            {
-                for (int i = 0; i < set.Length; i++)
+                int newIndex = (index + i) % set.Length;
+
+                if (set[newIndex] != null && !set[newIndex].IsDeleted && set[newIndex].Data.Equals(item))
                 {
-                    int newIndex = (index + i) % set.Length; //новый индекс
-                    if (set[newIndex] != null &&
-                        set[newIndex].Data.Equals(item)) //есть такой элемент
-                        return;
-                    if (set[newIndex] == null || set[newIndex].IsDeleted)
-                    {
-                        set[newIndex] = new HashPoint<T>(item);
-                        count++;
-                        return;
-                    }
+                    // Такой элемент уже существует
+                    return;//if exists, then leave
+                }
+
+                if (set[newIndex] == null || set[newIndex].IsDeleted)
+                {
+                    // Нашли свободное или удалённое место — можно вставить
+                    set[newIndex] = new HashPoint<T>(item);
+                    count++;
+                    return;
                 }
             }
         }
@@ -134,19 +170,21 @@ namespace Collections
             return false;
         }
 
-        public void CopyTo(T[] array, int arrayIndex)
-        {
-            throw new NotImplementedException();
-        }
+        //public void CopyTo(T[] array, int arrayIndex)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public bool Remove(MusicalInstrument itemToDelete)
         {
             T item = (T)(object)itemToDelete;
+
             if (item == null) return false;//не удалили
+
             int index = Math.Abs(item.GetHashCode()) % set.Length;//нидекс в массиве
             if (set[index] != null)//элемент может быть непустой или пустой (null)
             {
-                if (!set[index].IsDeleted && set[index].Data.Equals(item)) //элемент не удален и равен item
+                if (!set[index].IsDeleted && set[index].Data.Equals(item)) //элемент не удален и равен item //тк тут есть проверка на isDeleted то с одинаковым хэшем будут удаляться разные штуки, как у меня при добавлении двух а потом удалении первого второй не удалялся пишу чтобы не забыть а то боюс
                 {
                     count--;
                     set[index].IsDeleted = true;

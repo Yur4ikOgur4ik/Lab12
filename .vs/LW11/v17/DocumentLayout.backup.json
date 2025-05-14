@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "C:\\Users\\PogU\\source\\repos\\Lab12\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E69194AD-7331-4CA2-AA14-98E842A63068}|Tests\\Test\\Test.csproj|c:\\users\\pogu\\source\\repos\\lab12\\tests\\test\\testhc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E69194AD-7331-4CA2-AA14-98E842A63068}|Tests\\Test\\Test.csproj|solutionrelative:tests\\test\\testhc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|c:\\users\\pogu\\source\\repos\\lab12\\collections\\hashpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|solutionrelative:collections\\hashpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|c:\\users\\pogu\\source\\repos\\lab12\\collections\\myopenhs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|solutionrelative:collections\\myopenhs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37B40D9D-01F0-4F4B-B2E3-410D6BF5ACD0}|LW11\\LW11.csproj|c:\\users\\pogu\\source\\repos\\lab12\\lw11\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37B40D9D-01F0-4F4B-B2E3-410D6BF5ACD0}|LW11\\LW11.csproj|solutionrelative:lw11\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|c:\\users\\pogu\\source\\repos\\lab12\\musicalinstruments\\piano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|solutionrelative:musicalinstruments\\piano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E69194AD-7331-4CA2-AA14-98E842A63068}|Tests\\Test\\Test.csproj|c:\\users\\pogu\\source\\repos\\lab12\\tests\\test\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E69194AD-7331-4CA2-AA14-98E842A63068}|Tests\\Test\\Test.csproj|solutionrelative:tests\\test\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,32 +31,12 @@
       "RelativeMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|solutionrelative:collections\\list.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37B40D9D-01F0-4F4B-B2E3-410D6BF5ACD0}|LW11\\LW11.csproj|c:\\users\\pogu\\source\\repos\\lab12\\lw11\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37B40D9D-01F0-4F4B-B2E3-410D6BF5ACD0}|LW11\\LW11.csproj|solutionrelative:lw11\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|c:\\users\\pogu\\source\\repos\\lab12\\collections\\point.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|solutionrelative:collections\\point.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|c:\\users\\pogu\\source\\repos\\lab12\\collections\\hashpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|solutionrelative:collections\\hashpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|c:\\users\\pogu\\source\\repos\\lab12\\musicalinstruments\\musicalinstrument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|solutionrelative:musicalinstruments\\musicalinstrument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|c:\\users\\pogu\\source\\repos\\lab12\\collections\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
       "RelativeMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|solutionrelative:collections\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|c:\\users\\pogu\\source\\repos\\lab12\\collections\\myopenhs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7333A9FF-86AD-419B-A385-1AEFBB2055FA}|Collections\\Collections.csproj|solutionrelative:collections\\myopenhs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|c:\\users\\pogu\\source\\repos\\lab12\\musicalinstruments\\piano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|solutionrelative:musicalinstruments\\piano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|c:\\users\\pogu\\source\\repos\\lab12\\musicalinstruments\\musicalinstrument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|solutionrelative:musicalinstruments\\musicalinstrument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1308572A-6341-4A76-B1E3-29F97A804FFA}|MusicalInstruments\\MusicalInstruments.csproj|c:\\users\\pogu\\source\\repos\\lab12\\musicalinstruments\\electroguitar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -66,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,7 +82,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "TestHC.cs",
+              "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\Tests\\Test\\TestHC.cs",
+              "RelativeDocumentMoniker": "Tests\\Test\\TestHC.cs",
+              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\Tests\\Test\\TestHC.cs*",
+              "RelativeToolTip": "Tests\\Test\\TestHC.cs*",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAqwL4AAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T08:12:13.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "ClassDiagram1.cd",
               "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\ClassDiagram1.cd",
               "RelativeDocumentMoniker": "Collections\\ClassDiagram1.cd",
@@ -93,27 +106,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "MyOpenHs.cs",
               "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\MyOpenHs.cs",
               "RelativeDocumentMoniker": "Collections\\MyOpenHs.cs",
               "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\MyOpenHs.cs",
               "RelativeToolTip": "Collections\\MyOpenHs.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAALQAAAAAAAAAAAAkwJUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T16:43:50.962Z"
+              "WhenOpened": "2025-04-24T16:43:50.962Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "HashPoint.cs",
               "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\HashPoint.cs",
               "RelativeDocumentMoniker": "Collections\\HashPoint.cs",
               "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\HashPoint.cs",
               "RelativeToolTip": "Collections\\HashPoint.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wBwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T16:40:19.239Z"
+              "WhenOpened": "2025-04-24T16:40:19.239Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -129,70 +144,70 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Piano.cs",
               "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\MusicalInstruments\\Piano.cs",
               "RelativeDocumentMoniker": "MusicalInstruments\\Piano.cs",
               "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\MusicalInstruments\\Piano.cs",
               "RelativeToolTip": "MusicalInstruments\\Piano.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAkwIoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAkwGkAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T17:10:25.978Z"
+              "WhenOpened": "2025-04-17T17:10:25.978Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Test1.cs",
               "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\Tests\\Test\\Test1.cs",
               "RelativeDocumentMoniker": "Tests\\Test\\Test1.cs",
-              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\Tests\\Test\\Test1.cs*",
-              "RelativeToolTip": "Tests\\Test\\Test1.cs*",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAUwHUAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\Tests\\Test\\Test1.cs",
+              "RelativeToolTip": "Tests\\Test\\Test1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T12:33:00.302Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "MusicalInstrument.cs",
               "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\MusicalInstruments\\MusicalInstrument.cs",
               "RelativeDocumentMoniker": "MusicalInstruments\\MusicalInstrument.cs",
               "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\MusicalInstruments\\MusicalInstrument.cs",
               "RelativeToolTip": "MusicalInstruments\\MusicalInstrument.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAkwDgAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAF0AAAAAAAAAAAA3wDgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T17:10:16.846Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\LW11\\Program.cs",
               "RelativeDocumentMoniker": "LW11\\Program.cs",
               "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\LW11\\Program.cs",
               "RelativeToolTip": "LW11\\Program.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAiwNYAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAADABAAAAAAAAAADwvzwBAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-15T11:38:24.661Z",
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "List.cs",
               "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\List.cs",
               "RelativeDocumentMoniker": "Collections\\List.cs",
-              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\List.cs*",
-              "RelativeToolTip": "Collections\\List.cs*",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAuwKgAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\List.cs",
+              "RelativeToolTip": "Collections\\List.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T16:21:52.598Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "WhenOpened": "2025-04-16T16:21:52.598Z"
             },
             {
               "$type": "Document",
@@ -241,40 +256,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T12:32:32.94Z"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "98a16369-a279-4e24-86e2-ae887d7c1a7d",
-        "Display": 0,
-        "X": 1289,
-        "Y": 524,
-        "Width": 508,
-        "Height": 624,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Point.cs",
-              "DocumentMoniker": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\Point.cs",
-              "RelativeDocumentMoniker": "Collections\\Point.cs",
-              "ToolTip": "C:\\Users\\PogU\\source\\repos\\Lab12\\Collections\\Point.cs",
-              "RelativeToolTip": "Collections\\Point.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBQAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T16:18:07.563Z",
-              "EditorCaption": ""
             }
           ]
         }
