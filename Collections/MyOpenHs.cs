@@ -15,7 +15,7 @@ namespace Collections
 
         public int Count => count;
         public int Capacity => set.Length;
-        public bool IsReadOnly => throw new NotImplementedException();
+        
 
         public MyOpenHs(int capacity = 10, double loadfactor = 0.72)
         {
