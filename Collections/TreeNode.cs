@@ -11,22 +11,17 @@ namespace Collections
         public T? Data { get; set; }
         public TreeNode<T> Left { get; set; }
         public TreeNode<T> Right { get; set; }
-        public int Height { get; set; }
-
-        public TreeNode()
-        {
-            Data = default(T);
-            Left = null;
-            Right = null;
-            Height = 1;
-        }
 
         public TreeNode(T data)
         {
             Data = data;
             Left = null;
-            Right = null;
-            Height = 1;
+            Right = null; 
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }

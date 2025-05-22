@@ -7,16 +7,19 @@ using System.Collections.Generic;
 using System.Reflection;
 using Collections;
 using System.Xml.Linq;
+using System.Diagnostics;
 
 
 namespace LW11
 {
     public class Program
     {
-        static AVLTree<MusicalInstrument> avlTree = new();
+        
         static DoublyLinkedList<MusicalInstrument> instrumentList = new DoublyLinkedList<MusicalInstrument>();
         static MyOpenHs<MusicalInstrument> hashTable = new MyOpenHs<MusicalInstrument>(4, 0.72);
-        
+        static BinaryTree<MusicalInstrument> binaryTree = new BinaryTree<MusicalInstrument>();
+        private static BinaryTree<MusicalInstrument> searchTree = new BinaryTree<MusicalInstrument>();
+
 
         #region Enter MI
         static string InputInstrumentType()
@@ -357,37 +360,80 @@ namespace LW11
         {
             while (true)
             {
-                Console.WriteLine("\n=== Меню работы с деревом ===");
-                Console.WriteLine("1. Добавить элемент в дерево");
-                Console.WriteLine("2. Вывести дерево по уровням");
-                Console.WriteLine("3. Найти элемент по имени");
-                Console.WriteLine("4. Удалить элемент по имени");
-                Console.WriteLine("5. Загрузить тестовые данные");
-                Console.WriteLine("6. Очистить дерево");
-                Console.WriteLine("0. Вернуться в главное меню");
+                Console.WriteLine("\n===== Меню работы с деревом =====");
+                Console.WriteLine("1. Создать идеально сбалансированное дерево");
+                Console.WriteLine("2. Вывести дерево 'лежащим на боку'");
+                Console.WriteLine("3. Преобразовать в дерево поиска");
+                Console.WriteLine("4. Вывести дерево поиска");
+                Console.WriteLine("5. Найти элемент с максимальным ID");
+                Console.WriteLine("0. Выход");
+                Console.Write("Выберите пункт: ");
 
-                int choice = ValidInput.GetInt("Введите ваш выбор:");
+                int choice = ValidInput.GetInt("Enter your choice");
 
                 switch (choice)
                 {
                     case 1:
-                        AddToTree();
+                        CreateBalancedTree();
                         break;
                     case 2:
-                        PrintTreeLevelOrder();
+                        if (binaryTree != null && binaryTree.Root != null)
+                            binaryTree.ShowTree();
+                        else
+                            Console.WriteLine("Дерево пусто.");
                         break;
                     case 3:
-                        FindInTree();
+                        if (binaryTree == null || binaryTree.Root == null)
+                        {
+                            Console.WriteLine("Дерево не создано.");
+                        }
+                        else
+                        {
+                            searchTree = binaryTree.ConvertToSearchTree();
+                            Console.WriteLine("Дерево преобразовано в дерево поиска.");
+                        }
                         break;
                     case 4:
-                        RemoveFromTree();
+                        if (searchTree == null)
+                        {
+                            Console.WriteLine("Дерево поиска не создано.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Дерево поиска:");
+                            searchTree.ShowTree();
+                        }
                         break;
                     case 5:
-                        LoadDefaultTreeData();
+                        if (binaryTree == null || binaryTree.Root == null)
+                        {
+                            Console.WriteLine("Дерево не создано.");
+                        }
+                        else
+                        {
+                            var max = binaryTree.FindMaxId();
+                            Console.WriteLine("Элемент с максимальным ID:");
+                            Console.WriteLine(max);
+                        }
                         break;
                     case 6:
-                        avlTree.Clear();
-                        Console.WriteLine("Дерево очищено.");
+                        if (searchTree == null || searchTree.Root == null)
+                        {
+                            Console.WriteLine("Дерево поиска пусто.");
+                        }
+                        else
+                        {
+                            int idToDelete = ValidInput.GetInt("Введите ID для удаления");
+                            if (searchTree.Contains(new IdNumber(idToDelete)))
+                            {
+                                searchTree.DeleteById(new IdNumber(idToDelete));
+                                Console.WriteLine($"Элемент с ID {idToDelete} удален.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Элемент с ID {idToDelete} не найден.");
+                            }
+                        }
                         break;
                     case 0:
                         return;
@@ -397,104 +443,16 @@ namespace LW11
                 }
             }
         }
-
-        static void AddToTree()
+        private static void CreateBalancedTree()
         {
-            var instrument = GetMusicalInstrument();
-            avlTree.Insert(instrument);
-            Console.WriteLine($"Добавлено: {instrument.Name}");
+            int size = ValidInput.GetPositiveInt("Введите размер дерева:");
+
+            
+            binaryTree.BuildPerfectTree(size);
+
+            Console.WriteLine("Дерево создано.");
         }
 
-        static void FindInTree()
-        {
-            Console.Write("Введите имя инструмента для поиска: ");
-            string name = Console.ReadLine().Trim();
-
-            List<MusicalInstrument> found = new List<MusicalInstrument>();
-            TraverseAndCollect(avlTree.Root, name, found);
-
-            if (found.Count > 0)
-            {
-                Console.WriteLine("Найденные элементы:");
-                foreach (var item in found)
-                    Console.WriteLine(item);
-            }
-            else
-            {
-                Console.WriteLine("Элемент не найден.");
-            }
-        }
-
-        private static void TraverseAndCollect(TreeNode<MusicalInstrument> node, string name, List<MusicalInstrument> found)
-        {
-            if (node == null) return;
-
-            TraverseAndCollect(node.Left, name, found);
-
-            if (node.Data.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
-                found.Add(node.Data);
-
-            TraverseAndCollect(node.Right, name, found);
-        }
-
-        static void RemoveFromTree()
-        {
-            Console.Write("Введите имя инструмента для удаления: ");
-            string name = Console.ReadLine().Trim();
-
-            bool removed = false;
-            CollectAndRemove(avlTree.Root, name, ref removed);
-            if (!removed)
-                Console.WriteLine("Элемент не найден или дерево пустое.");
-            else
-                Console.WriteLine($"Удалены все элементы с именем: {name}");
-        }
-
-        private static void CollectAndRemove(TreeNode<MusicalInstrument> node, string name, ref bool removed)
-        {
-            if (node == null) return;
-
-            CollectAndRemove(node.Left, name, ref removed);
-            CollectAndRemove(node.Right, name, ref removed);
-
-            if (node.Data.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
-            {
-                avlTree.Delete(node.Data);
-                removed = true;
-            }
-        }
-
-        static void LoadDefaultTreeData()
-        {
-            avlTree.Clear();
-
-            List<MusicalInstrument> instruments = new()
-    {
-        new Piano("Grand Piano", 1, "Acoustic", 88),
-        new Piano("Digital Piano", 2, "Digital", 76),
-        new Guitar("Acoustic Guitar", 3, 6),
-        new Guitar("Bass Guitar", 4, 4),
-        new MusicalInstrument("Drums", 5),
-        new MusicalInstrument("Flute", 6)
-    };
-
-            // Сортируем перед построением идеального дерева
-            instruments.Sort();
-            BuildPerfectSubtree(instruments, 0, instruments.Count - 1);
-
-            Console.WriteLine("Тестовые данные загружены в дерево.");
-        }
-
-        private static void BuildPerfectSubtree(List<MusicalInstrument> elements, int start, int end)
-        {
-            if (start > end) return;
-
-            int mid = (start + end) / 2;
-            avlTree.Insert(elements[mid]);
-
-            BuildPerfectSubtree(elements, start, mid - 1);
-            BuildPerfectSubtree(elements, mid + 1, end);
-        }
 
         #endregion
     }

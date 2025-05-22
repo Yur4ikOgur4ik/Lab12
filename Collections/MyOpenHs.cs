@@ -26,40 +26,6 @@ namespace Collections
             set = new HashPoint<T>[capacity]; // создали массив элементов
             LoadFactor = loadfactor;
         }
-        //public void Add(T itemToAdd) ---------NOT FIXED, TO SHOW WHY-----------------
-        //{
-        //    T item = (T)(object)itemToAdd;
-
-        //    if (item == null)
-        //        throw new Exception("Element is empty");
-
-        //    if (count >= LoadFactor * set.Length)
-        //        Resize(); //Увеличить размер в два раза
-
-        //    int index = Math.Abs(item.GetHashCode()) % set.Length;
-
-        //    if (set[index] == null || set[index].IsDeleted)
-        //    {
-        //        set[index] = new HashPoint<T>(item);
-        //        count++;
-        //    }
-        //    else//ищем место
-        //    {
-        //        for (int i = 0; i < set.Length; i++)
-        //        {
-        //            int newIndex = (index + i) % set.Length; //новый индекс
-        //            if (set[newIndex] != null &&
-        //                set[newIndex].Data.Equals(item)) //есть такой элемент //izza etogo, t.e. proveryalsya tolko 1 elem, 
-        //                return;
-        //            if (set[newIndex] == null || set[newIndex].IsDeleted)
-        //            {
-        //                set[newIndex] = new HashPoint<T>(item);
-        //                count++;
-        //                return;
-        //            }
-        //        }
-        //    }
-        //}
 
         public void Add(T itemToAdd)
         {
