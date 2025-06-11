@@ -11,28 +11,7 @@ namespace Collections
     {
         public T CreateRandomInstr()
         {
-            Random rnd = new Random();
-            MusicalInstrument instr;
-            int type = rnd.Next(3);
-            switch (type)
-            {
-                case 0:
-                    instr = new MusicalInstrument();
-                    break;
-                case 1:
-                    instr = new Guitar();
-                    break;
-                case 2:
-                    instr = new ElectroGuitar();
-                    break;
-                default:
-                    instr = new Piano();
-                    break;
-
-            }
-            instr.RandomInit();
-            instr.Name = instr.Name + " (Rnd)";
-            return (T)(object)instr;
+            return (T)(object)ValidInput.CreateRandomInstr();
         }
         public TreeNode<T> Root { get; private set; }
 
@@ -61,7 +40,8 @@ namespace Collections
             int rightSize = size - leftSize - 1;
 
             // Создаём случайный инструмент для текущего узла
-            T instrument = CreateRandomInstr();
+            T instrument = CreateRandomInstr(); //or T instr = new T()
+                                                // instr.RandomInit()
 
             // Создаём узел
             TreeNode<T> node = new TreeNode<T>(instrument);
@@ -73,29 +53,29 @@ namespace Collections
             return node;
         }
 
-        public void ShowTree()
+        public string ShowTree(TreeNode<T> node, int level)
         {
-            if (Root == null)
-            {
-                Console.WriteLine("Tree is empty");
-                return;
-            }
-
-            ShowTree(Root, 0);
+            return ShowTreeRecursive(node, level);
         }
 
-        public void ShowTree(TreeNode<T> node, int level)
+        private string ShowTreeRecursive(TreeNode<T> node, int level)
         {
-            // Сначала выводим правое поддерево
-            if (node.Right != null)
-                ShowTree(node.Right, level + 1);
+            if (node == null)
+                return string.Empty;
 
-            // Выводим текущий узел
-            Console.WriteLine($"{new string(' ', level * 4)}[{level}] {node.Data}");
+            // Строим строку с помощью рекурсии
+            string result = string.Empty;
+
+            // Сначала правое поддерево
+            result += ShowTreeRecursive(node.Right, level + 1);
+
+            // Затем текущий узел
+            result += new string(' ', level * 4) + $"[{level}] {node.Data}\n";
 
             // Затем левое поддерево
-            if (node.Left != null)
-                ShowTree(node.Left, level + 1);
+            result += ShowTreeRecursive(node.Left, level + 1);
+
+            return result;
         }
 
         public MusicalInstrument FindMaxId()
@@ -201,7 +181,7 @@ namespace Collections
             Root = DeleteNode(Root, id);
         }
 
-        private TreeNode<T> DeleteNode(TreeNode<T> node, IdNumber id)
+        public TreeNode<T> DeleteNode(TreeNode<T> node, IdNumber id)
         {
             if (node == null)
                 return null;
@@ -272,6 +252,11 @@ namespace Collections
                 return Contains(node.Left, id);
             else
                 return Contains(node.Right, id);
+        }
+
+        public void Clear()
+        {
+            Root = null;
         }
     }
 }

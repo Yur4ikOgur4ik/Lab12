@@ -21,7 +21,7 @@ namespace Collections
 
         public override string ToString()
         {
-            return base.ToString();
+            return Data?.ToString() ?? "null";
         }
     }
 }

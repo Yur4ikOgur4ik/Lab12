@@ -118,7 +118,7 @@ namespace MusicalInstruments
 
         public override int GetHashCode()
         {
-            return base.GetHashCode() ^ KeyLayout.GetHashCode() ^ KeyCount.GetHashCode();
+            return 2;
         }
 
         public override object Clone()

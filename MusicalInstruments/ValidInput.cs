@@ -53,5 +53,31 @@ namespace MusicalInstruments
             }
 
         }
+
+        public static MusicalInstrument CreateRandomInstr()
+        {
+            Random rnd = new Random();
+            MusicalInstrument instr;
+            int type = rnd.Next(3);
+            switch (type)
+            {
+                case 0:
+                    instr = new MusicalInstrument();
+                    break;
+                case 1:
+                    instr = new Guitar();
+                    break;
+                case 2:
+                    instr = new ElectroGuitar();
+                    break;
+                default:
+                    instr = new Piano();
+                    break;
+
+            }
+            instr.RandomInit();
+            instr.Name = instr.Name + " (Rnd)";
+            return instr;
+        }
     }
 }

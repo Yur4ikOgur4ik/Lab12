@@ -8,6 +8,8 @@ using System.Reflection;
 using Collections;
 using System.Xml.Linq;
 using System.Diagnostics;
+using System.ComponentModel.Design.Serialization;
+using System.Collections.ObjectModel;
 
 
 namespace LW11
@@ -19,6 +21,7 @@ namespace LW11
         static MyOpenHs<MusicalInstrument> hashTable = new MyOpenHs<MusicalInstrument>(4, 0.72);
         static BinaryTree<MusicalInstrument> binaryTree = new BinaryTree<MusicalInstrument>();
         private static BinaryTree<MusicalInstrument> searchTree = new BinaryTree<MusicalInstrument>();
+        private static MyCollection<MusicalInstrument> collection = new MyCollection<MusicalInstrument>(3);
 
 
         #region Enter MI
@@ -94,6 +97,8 @@ namespace LW11
                     Console.WriteLine("\n=== Main menu ===");
                     Console.WriteLine("1. List");
                     Console.WriteLine("2. Hash table");
+                    Console.WriteLine("3. Binary tree");
+                    Console.WriteLine("4. Collection");
                     Console.WriteLine("0. Exit");
 
                     int choice = ValidInput.GetInt("Enter your choice");
@@ -108,6 +113,9 @@ namespace LW11
                             break;
                         case 3:
                             TreeMenu();
+                            break;
+                        case 4:
+                            CollectionMenu();
                             break;
                         case 0:
                             return;
@@ -287,10 +295,7 @@ namespace LW11
 
             hashTable.Add(new Piano("Grand Piano", 1, "Octave", 88));
             hashTable.Add(new Piano("Digital Piano", 2, "Scale", 76));
-            hashTable.Add(new Guitar("Acoustic Guitar", 3, 6));
-            hashTable.Add(new Guitar("Bass Guitar", 4, 4));
-            hashTable.Add(new MusicalInstrument("Drums", 5));
-            hashTable.Add(new MusicalInstrument("Flute", 6));
+            
 
 
             Console.WriteLine("Hash table filled successfully");
@@ -332,6 +337,7 @@ namespace LW11
             }
             MusicalInstrument name = GetMusicalInstrument();
             
+
             if (hashTable.Remove(name))
             {
                 Console.WriteLine("Instrument successfully deleted");
@@ -366,6 +372,9 @@ namespace LW11
                 Console.WriteLine("3. Преобразовать в дерево поиска");
                 Console.WriteLine("4. Вывести дерево поиска");
                 Console.WriteLine("5. Найти элемент с максимальным ID");
+                Console.WriteLine("6. Delete by ID");
+                Console.WriteLine("7. Clear Binary tree");
+                Console.WriteLine("8. Clear Search tree");
                 Console.WriteLine("0. Выход");
                 Console.Write("Выберите пункт: ");
 
@@ -378,7 +387,7 @@ namespace LW11
                         break;
                     case 2:
                         if (binaryTree != null && binaryTree.Root != null)
-                            binaryTree.ShowTree();
+                            Console.WriteLine(binaryTree.ShowTree(binaryTree.Root, 0));
                         else
                             Console.WriteLine("Дерево пусто.");
                         break;
@@ -401,7 +410,10 @@ namespace LW11
                         else
                         {
                             Console.WriteLine("Дерево поиска:");
-                            searchTree.ShowTree();
+                            if (searchTree.Root != null)
+                                Console.WriteLine(searchTree.ShowTree(searchTree.Root, 0));
+                            else
+                                Console.WriteLine("Search tree is empry");
                         }
                         break;
                     case 5:
@@ -435,6 +447,12 @@ namespace LW11
                             }
                         }
                         break;
+                    case 7:
+                        binaryTree.Clear();
+                        break;
+                    case 8:
+                        searchTree.Clear();
+                        break;
                     case 0:
                         return;
                     default:
@@ -453,6 +471,122 @@ namespace LW11
             Console.WriteLine("Дерево создано.");
         }
 
+
+        #endregion
+        #region Collection
+        static void CollectionMenu()
+        {
+            while (true)
+            {
+                Console.WriteLine("\n=== Collection Menu ===");
+                Console.WriteLine("1. Add element");
+                Console.WriteLine("2. Remove element");
+                Console.WriteLine("3. Print all elements (foreach)");
+                Console.WriteLine("4. Make a copy of a collection");
+                Console.WriteLine("5. Clear collection");
+                Console.WriteLine("6. Show count of elements");
+                Console.WriteLine("0. Back to main menu");
+
+                int choice = ValidInput.GetInt("Enter your choice:");
+
+                switch (choice)
+                {
+                    case 1:
+                        AddToCollection();
+                        break;
+                    case 2:
+                        RemoveFromCollection();
+                        break;
+                    
+                    case 3:
+                        PrintWithForeach();
+                        break;
+                    case 4:
+                        CopyToArrayAndPrint();
+                        break;
+                    case 5:
+                        collection.Clear();
+                        Console.WriteLine("Collection cleared.");
+                        break;
+                    case 6:
+                        Console.WriteLine($"Element count: {collection.Count}");
+                        break;
+                    case 0:
+                        return;
+                    default:
+                        Console.WriteLine("Invalid choice. Try again.");
+                        break;
+                }
+            }
+        }
+        static void AddToCollection()
+        {
+            Console.WriteLine("Enter instrument to add:");
+            MusicalInstrument item = GetMusicalInstrument();
+            if (!collection.Contains(item))
+            {
+                collection.Add(item);
+                Console.WriteLine("Instrument added.");
+            }
+            else
+                Console.WriteLine("There is such item in collection already");
+        }
+
+        static void RemoveFromCollection()
+        {
+            if (collection.Count == 0)
+            {
+                Console.WriteLine("Collection is empty.");
+                return;
+            }
+
+            Console.WriteLine("Enter instrument to remove:");
+            MusicalInstrument item = GetMusicalInstrument();
+
+            if (collection.Remove(item))
+                Console.WriteLine("Instrument removed.");
+            else
+                Console.WriteLine("Instrument not found.");
+        }
+
+        
+
+        static void PrintWithForeach()
+        {
+            Console.WriteLine("\nPrinting via foreach:");
+            if (collection.Count == 0)
+            {
+                Console.WriteLine("Collection is empty.");
+                return;
+            }
+
+            foreach (var item in collection)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        static void CopyToArrayAndPrint()
+        {
+            if (collection.Count == 0)
+            {
+                Console.WriteLine("Collection is empty.");
+                return;
+            }
+
+            MyCollection<MusicalInstrument> clonedCollection = new MyCollection<MusicalInstrument>(collection);
+
+            MusicalInstrument rndInstr = new MusicalInstrument();
+            rndInstr.RandomInit();
+            collection.Add(rndInstr);//add to main to see the difference
+
+            Console.WriteLine("Cloned Collection");
+            foreach (var item in clonedCollection) { Console.WriteLine(item); }
+
+            Console.WriteLine("Original collection");
+            foreach (var item in collection) { Console.WriteLine(item); }
+
+        }
 
         #endregion
     }

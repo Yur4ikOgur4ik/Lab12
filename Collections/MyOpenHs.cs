@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Collections
 {
-    public class MyOpenHs<T> where T : MusicalInstrument, IInit, ICloneable
+    public class MyOpenHs<T> where T : IInit, ICloneable
     {
         public HashPoint<T>[] set; //начало списка
         int count = 0; //кол-во элементов
@@ -141,7 +141,7 @@ namespace Collections
         //    throw new NotImplementedException();
         //}
 
-        public bool Remove(MusicalInstrument itemToDelete)
+        public bool Remove(T itemToDelete)
         {
             T item = (T)(object)itemToDelete;
 

@@ -3,7 +3,7 @@
   <Class Name="LW11.Program">
     <Position X="7.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAUIAIAAAAAIABCAEIAAAAABQAAgARBACgAA=</HashCode>
+      <HashCode>AAAAABAAAUoAIBAAAAIABCAEIAAAAAhQAAgARBAGgAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -35,12 +35,12 @@
     <Position X="7.75" Y="0.5" Width="1.5" />
     <TypeIdentifier />
   </Class>
-  <Class Name="Collections.HashPoint&lt;T&gt;">
-    <Position X="10" Y="0.75" Width="1.5" />
+  <Class Name="Collections.TreeNode&lt;T&gt;">
+    <Position X="9.5" Y="4" Width="1.5" />
     <TypeIdentifier />
   </Class>
-  <Class Name="Collections.MyOpenHs&lt;T&gt;">
-    <Position X="10" Y="3" Width="1.5" />
+  <Class Name="Collections.BinaryTree&lt;T&gt;">
+    <Position X="9.5" Y="0.75" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Interface Name="MusicalInstruments.IInit">
